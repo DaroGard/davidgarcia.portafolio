@@ -1,0 +1,23 @@
+---
+interface Props {
+  src: string;
+  alt: string;
+  nivel: string;
+  color: 'green' | 'blue' | 'yellow';
+}
+
+const { src, alt, nivel, color }: Props = Astro.props;
+
+const colorClass = {
+  green: 'bg-green-600',
+  blue: 'bg-blue-600',
+  yellow: 'bg-yellow-500',
+}[color];
+---
+
+<div class="flex flex-col items-center space-y-2 opacity-90 hover:opacity-100 transition-opacity">
+  <img src={src} alt={alt} class="w-12 h-12" />
+  <span class={`text-xs ${colorClass} text-white px-2 py-1 rounded-full`}>
+    {nivel}
+  </span>
+</div>
