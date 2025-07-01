@@ -9,8 +9,39 @@ import ProyectoCard from './../Card.astro';
     <ProyectoCard title="Sistema Registro UNAH" desc="Propuesta de plataforma digital para el registro académico de la UNAH como proyecto estudiantil" img="/assets/imgs/RegistroUNAH.webp" link="https://github.com/MoralesGuillermo/Sistema_Registro_UNAH" />
     <ProyectoCard title="CodeCabinet" desc="Plataforma web para gestión y codificación colaborativa en línea." img="/assets/imgs/CodeCabinet.webp" link="https://github.com/DaroGard/CodeCabinet" />
     <ProyectoCard title="PhPascal" desc="Implementación de un mini lenguaje con análisis sintáctico basado en Lark, interfaz CLI y web, con pruebas automatizadas." img="/assets/imgs/phPascal.webp" link="https://github.com/GerardoSalinas/Proyecto-Compiladores" />
-    <ProyectoCard title="Infraestructura para Plataforma de E-commerce y Analítica" desc="Diseño e implementación de una infraestructura en la nube para una plataforma de comercio electrónico." img="/assets/imgs/enDesarrollo.webp" link="#" />
+    <div id="ecommerceTrigger" class="cursor-pointer">
+      <ProyectoCard title="Infraestructura para Plataforma de E-commerce y Analítica" desc="Diseño e implementación de una infraestructura en la nube para una plataforma de comercio electrónico." img="/assets/imgs/ecommerce-architecture.webp"/>
+    </div>
     <ProyectoCard title="Temis" desc="ERP SaaS para firmas de abogados, con gestión de casos, audiencias, documentos, tareas y búsqueda legal con IA." img="/assets/imgs/enDesarrollo.webp" link="#" />
     <ProyectoCard title="Wordle" desc="Versión básica del juego Wordle." img="/assets/imgs/Wordle.webp" link="https://github.com/DaroGard/primer-proyecto-java" />
   </div>
 </section>
+
+<!-- Modal -->
+<div id="ecommerceModal" class="fixed inset-0 flex items-center justify-center z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300 hidden">
+  <div class="relative w-full max-w-2xl bg-secondary/50 backdrop-blur-md text-textPrimary p-6 rounded-2xl shadow-2xl border border-accent space-y-6 mx-4 sm:mx-0">
+    <button id="closeModal" aria-label="Cerrar modal" class="absolute top-3 right-3 text-xl text-accent hover:text-red-500 font-bold focus:outline-none">&times;</button>
+    <a href="https://drive.google.com/file/d/1xz6bgtVmvRx2ZHQc4uHk-_j3QGtZ91sW/view">
+      <img src="/assets/imgs/ecommerce-architecture.webp" alt="Infraestructura E-commerce" class="rounded-lg w-full max-h-96 object-contain shadow-inner border border-textPrimary/20" />
+    </a>
+    <p class="text-base leading-relaxed">
+      Diseño e implementación de una infraestructura modular en Azure para una plataforma de e-commerce con capacidades analíticas, 
+      que incluya un portal principal, backoffice, procesamiento asíncrono y un Data Warehouse, 
+      todo gestionado con Terraform en tres repositorios independientes.
+    </p>
+    <div class="flex flex-wrap gap-3 justify-start pt-2">
+      <a href="https://github.com/carlos-fl/ecommerce-expertos-client-side-repo.git" target="_blank"
+         class="bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-md transition">
+        Repositorio Client Async
+      </a>
+      <a href="https://github.com/sammycastl/ecommerce-infra-nginx-erp-db" target="_blank"
+         class="bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-md transition">
+        Repositorio BackOffice
+      </a>
+      <a href="https://github.com/DaroGard/ecommerce-experts-etl-repo" target="_blank"
+         class="bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-md transition">
+        Repositorio Analytics
+      </a>
+    </div>
+  </div>
+</div>

@@ -105,4 +105,29 @@ window.addEventListener('load', () => {
   }, { threshold: 0.2 });
 
   document.querySelectorAll<HTMLElement>('[data-animate]').forEach(el => observer.observe(el));
+
+  // === MODAL: Ecommerce Project ===
+const modal = document.getElementById("ecommerceModal") as HTMLElement | null;
+const openTrigger = document.getElementById("ecommerceTrigger") as HTMLElement | null;
+const closeBtn = document.getElementById("closeModal") as HTMLElement | null;
+
+if (openTrigger && modal && closeBtn) {
+  openTrigger.addEventListener("click", () => {
+    modal.classList.remove("hidden");
+  });
+
+  closeBtn.addEventListener("click", () => {
+    modal.classList.add("hidden");
+  });
+
+  // Cierre al hacer clic fuera del modal
+  window.addEventListener("click", (event) => {
+    if (event.target === modal) {
+      modal.classList.add("hidden");
+    }
+  });
+} else {
+  console.warn("Elementos del modal no encontrados.");
+}
+
 });
