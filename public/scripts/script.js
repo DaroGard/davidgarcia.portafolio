@@ -85,4 +85,25 @@ window.addEventListener('load', function () {
         });
     }, { threshold: 0.2 });
     document.querySelectorAll('[data-animate]').forEach(function (el) { return observer.observe(el); });
+    // === MODAL: Ecommerce Project ===
+    var modal = document.getElementById("ecommerceModal");
+    var openTrigger = document.getElementById("ecommerceTrigger");
+    var closeBtn = document.getElementById("closeModal");
+    if (openTrigger && modal && closeBtn) {
+        openTrigger.addEventListener("click", function () {
+            modal.classList.remove("hidden");
+        });
+        closeBtn.addEventListener("click", function () {
+            modal.classList.add("hidden");
+        });
+        // Cierre al hacer clic fuera del modal
+        window.addEventListener("click", function (event) {
+            if (event.target === modal) {
+                modal.classList.add("hidden");
+            }
+        });
+    }
+    else {
+        console.warn("Elementos del modal no encontrados.");
+    }
 });
