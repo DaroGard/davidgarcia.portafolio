@@ -5,6 +5,9 @@ import ProyectoCard from './../Card.astro';
 <section id="proyectos" class="w-full max-w-6xl px-6 bg-secondary/50 backdrop-blur-md p-6 rounded-lg shadow-lg text-textPrimary space-y-6">
   <h2 class="text-2xl font-bold mb-4 border-b border-accent pb-2">Proyectos</h2>
   <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div id="moviesapiTrigger" class="cursor-pointer">
+      <ProyectoCard title="Pipeline de Datos y API con Caché Inteligente" desc="Solución backend para ingestión masiva de datos en Azure, API segura con FastAPI y Firebase, caching dinámico con Redis, monitoreo con Application Insights y despliegue en contenedores Docker sobre Azure." img="/assets/imgs/moviesapi.webp"/>
+    </div>
     <ProyectoCard title="Temis" desc="ERP SaaS para firmas de abogados, con gestión de casos, audiencias, documentos, tareas y búsqueda legal con IA." img="/assets/imgs/enDesarrollo.webp" link="#" />
     <div id="ecommerceTrigger" class="cursor-pointer">
       <ProyectoCard title="Infraestructura para Plataforma de E-commerce y Analítica" desc="Diseño e implementación de una infraestructura en la nube para una plataforma de comercio electrónico." img="/assets/imgs/ecommerce-architecture.webp"/>
@@ -41,6 +44,30 @@ import ProyectoCard from './../Card.astro';
       <a href="https://github.com/DaroGard/ecommerce-experts-etl-repo" target="_blank"
          class="bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-md transition">
         Repositorio Analytics
+      </a>
+    </div>
+  </div>
+</div>
+
+<div id="moviesapiModal" class="fixed inset-0 flex items-center justify-center z-50 bg-black/60 backdrop-blur-sm transition-opacity duration-300 hidden">
+  <div class="relative w-full max-w-2xl bg-secondary/50 backdrop-blur-md text-textPrimary p-6 rounded-2xl shadow-2xl border border-accent space-y-6 mx-4 sm:mx-0">
+    <button id="closeModal" aria-label="Cerrar modal" class="absolute top-3 right-3 text-xl text-accent hover:text-red-500 font-bold focus:outline-none">&times;</button>
+    <a href="https://drive.google.com/file/d/1xz6bgtVmvRx2ZHQc4uHk-_j3QGtZ91sW/view">
+      <img src="/assets/imgs/moviesapi.webp" alt="Infraestructura E-commerce" class="rounded-lg w-full max-h-96 object-contain shadow-inner border border-textPrimary/20" />
+    </a>
+    <p class="text-base leading-relaxed">
+      Desarrollo de una solución backend integral que permita la migración masiva de datos, su exposición mediante una API segura y eficiente, 
+      y su despliegue en un entorno cloud productivo. Incluye la implementación de monitoreo continuo para el rendimiento 
+      y una estrategia avanzada de caché con invalidación automática para optimizar la experiencia del usuario y la eficiencia del sistema.
+    </p>
+    <div class="flex flex-wrap gap-3 justify-start pt-2">
+      <a href="https://api-pr2-env.azurewebsites.net/docs" target="_blank"
+         class="bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-md transition">
+        Movies API
+      </a>
+      <a href="https://github.com/DaroGard/movies.api.git" target="_blank"
+         class="bg-accent hover:bg-accent/80 text-white px-4 py-2 rounded-xl text-sm font-medium shadow-md transition">
+        Repositorio
       </a>
     </div>
   </div>
