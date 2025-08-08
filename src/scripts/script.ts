@@ -107,46 +107,68 @@ window.addEventListener('load', () => {
   document.querySelectorAll<HTMLElement>('[data-animate]').forEach(el => observer.observe(el));
 
   //MODAL
-const modal = document.getElementById("ecommerceModal") as HTMLElement | null;
-const openTrigger = document.getElementById("ecommerceTrigger") as HTMLElement | null;
-const closeBtn = document.getElementById("closeModal") as HTMLElement | null;
+  const modal = document.getElementById("ecommerceModal") as HTMLElement | null;
+  const openTrigger = document.getElementById("ecommerceTrigger") as HTMLElement | null;
+  const closeBtn = document.getElementById("closeModal") as HTMLElement | null;
 
-if (openTrigger && modal && closeBtn) {
-  openTrigger.addEventListener("click", () => {
-    modal.classList.remove("hidden");
+  if (openTrigger && modal && closeBtn) {
+    openTrigger.addEventListener("click", () => {
+      modal.classList.remove("hidden");
+    });
+
+    closeBtn.addEventListener("click", () => {
+      modal.classList.add("hidden");
+    });
+
+    window.addEventListener("click", (event) => {
+      if (event.target === modal) {
+        modal.classList.add("hidden");
+      }
+    });
+  } else {
+    console.warn("Elementos del modal no encontrados.");
+  }
+
+});
+
+const moviesapiModal = document.getElementById("moviesapiModal") as HTMLElement | null;
+const moviesapiopenTrigger = document.getElementById("moviesapiTrigger") as HTMLElement | null;
+const moviesapicloseBtn = document.getElementById("closeModal") as HTMLElement | null;
+
+if (moviesapiopenTrigger && moviesapiModal && moviesapicloseBtn) {
+  moviesapiopenTrigger.addEventListener("click", () => {
+    moviesapiModal.classList.remove("hidden");
   });
 
-  closeBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
+  moviesapicloseBtn.addEventListener("click", () => {
+    moviesapiModal.classList.add("hidden");
   });
 
   window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      modal.classList.add("hidden");
+    if (event.target === moviesapiModal) {
+      moviesapiModal.classList.add("hidden");
     }
   });
 } else {
   console.warn("Elementos del modal no encontrados.");
 }
 
-});
+const pokequeueModal = document.getElementById("pokequeueModal") as HTMLElement | null;
+const pokequeueopenTrigger = document.getElementById("pokequeueTrigger") as HTMLElement | null;
+const pokequeuecloseBtn = document.getElementById("closeModal") as HTMLElement | null;
 
-const modal = document.getElementById("moviesapiModal") as HTMLElement | null;
-const openTrigger = document.getElementById("moviesapiTrigger") as HTMLElement | null;
-const closeBtn = document.getElementById("closeModal") as HTMLElement | null;
-
-if (openTrigger && modal && closeBtn) {
-  openTrigger.addEventListener("click", () => {
-    modal.classList.remove("hidden");
+if (pokequeueopenTrigger && pokequeueModal && pokequeuecloseBtn) {
+  pokequeueopenTrigger.addEventListener("click", () => {
+    pokequeueModal.classList.remove("hidden");
   });
 
-  closeBtn.addEventListener("click", () => {
-    modal.classList.add("hidden");
+  pokequeuecloseBtn.addEventListener("click", () => {
+    pokequeueModal.classList.add("hidden");
   });
 
   window.addEventListener("click", (event) => {
-    if (event.target === modal) {
-      modal.classList.add("hidden");
+    if (event.target === pokequeueModal) {
+      pokequeueModal.classList.add("hidden");
     }
   });
 } else {

@@ -106,19 +106,38 @@ window.addEventListener('load', function () {
         console.warn("Elementos del modal no encontrados.");
     }
 });
-var modal = document.getElementById("moviesapiModal");
-var openTrigger = document.getElementById("moviesapiTrigger");
-var closeBtn = document.getElementById("closeModal");
-if (openTrigger && modal && closeBtn) {
-    openTrigger.addEventListener("click", function () {
-        modal.classList.remove("hidden");
+var moviesapiModal = document.getElementById("moviesapiModal");
+var moviesapiopenTrigger = document.getElementById("moviesapiTrigger");
+var moviesapicloseBtn = document.getElementById("closeModal");
+if (moviesapiopenTrigger && moviesapiModal && moviesapicloseBtn) {
+    moviesapiopenTrigger.addEventListener("click", function () {
+        moviesapiModal.classList.remove("hidden");
     });
-    closeBtn.addEventListener("click", function () {
-        modal.classList.add("hidden");
+    moviesapicloseBtn.addEventListener("click", function () {
+        moviesapiModal.classList.add("hidden");
     });
     window.addEventListener("click", function (event) {
-        if (event.target === modal) {
-            modal.classList.add("hidden");
+        if (event.target === moviesapiModal) {
+            moviesapiModal.classList.add("hidden");
+        }
+    });
+}
+else {
+    console.warn("Elementos del modal no encontrados.");
+}
+var pokequeueModal = document.getElementById("pokequeueModal");
+var pokequeueopenTrigger = document.getElementById("pokequeueTrigger");
+var pokequeuecloseBtn = document.getElementById("closeModal");
+if (pokequeueopenTrigger && pokequeueModal && pokequeuecloseBtn) {
+    pokequeueopenTrigger.addEventListener("click", function () {
+        pokequeueModal.classList.remove("hidden");
+    });
+    pokequeuecloseBtn.addEventListener("click", function () {
+        pokequeueModal.classList.add("hidden");
+    });
+    window.addEventListener("click", function (event) {
+        if (event.target === pokequeueModal) {
+            pokequeueModal.classList.add("hidden");
         }
     });
 }
