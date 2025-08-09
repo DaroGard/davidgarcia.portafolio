@@ -197,22 +197,34 @@ import ProyectoCard from "./../Card.astro";
     />
     <p class="text-base leading-relaxed">
       Este proyecto consiste en una solución backend integral para generar
-      reportes CSV basados en datos de la PokeAPI. Permite la migración masiva
-      de datos, su exposición segura mediante una API robusta, y despliegue
-      completo en Azure con monitoreo y caché avanzada para optimizar el
-      rendimiento y experiencia de usuario.
+      reportes CSV basados en datos de la PokeAPI. Permite la migración de
+      datos, su exposición segura mediante una API, y despliegue completo en
+      Azure haciendo usos de colas para optimizar el rendimiento y experiencia
+      de usuario.
     </p>
 
     <h3 class="text-xl font-semibold mt-6">Arquitectura y Tecnologías</h3>
-    <p class="text-base leading-relaxed">
-      La arquitectura se basa en un frontend moderno con Next.js (React), una
-      API backend en Python con FastAPI desplegada en Azure App Service, un
-      proceso asíncrono desacoplado usando Azure Functions con Python Queue
-      Trigger, almacenamiento en Azure Blob Storage para CSVs, Azure Queue
-      Storage para mensajes, y una base de datos Azure SQL para gestión de
-      metadatos. La infraestructura es gestionada con Terraform.
-    </p>
-
+    <div class="text-base leading-relaxed space-y-4">
+      <p>
+        La solución está basada en una arquitectura moderna de aplicación web de
+        página única (SPA), compuesta por dos aplicaciones independientes: una
+        interfaz de usuario (frontend) desarrollada con Next.js (React) y una
+        API backend en Python con FastAPI. Ambas aplicaciones están desplegadas
+        en Azure App Service.
+      </p>
+      <p>
+        La gestión de datos se realiza a través de un servidor Azure SQL,
+        mientras que los archivos CSV generados se almacenan en Azure Blob
+        Storage. La comunicación asíncrona se maneja mediante Azure Queue
+        Storage, que alimenta una Azure Function (Function App) responsable del
+        procesamiento en segundo plano (worker).
+      </p>
+      <p>
+        Para el despliegue, se utilizan contenedores Docker gestionados a través
+        de Azure Container Registry. Toda la infraestructura fue administrada
+        con Terraform
+      </p>
+    </div>
     <h3 class="text-xl font-semibold mt-6">Funcionalidades Implementadas</h3>
     <ul class="list-disc list-inside space-y-2 text-base leading-relaxed">
       <li>
@@ -224,25 +236,49 @@ import ProyectoCard from "./../Card.astro";
         <strong>Enriquecimiento del Reporte:</strong> Se agregó información detallada
         de cada Pokémon, incluyendo estadísticas base (HP, Ataque, Defensa, Ataque
         Especial, Defensa Especial, Velocidad) y habilidades, obtenidas mediante
-        llamadas adicionales a la PokeAPI.
+        enriquecimiento en los detalles de la llamada a la PokeAPI.
       </li>
       <li>
         <strong>Muestreo Aleatorio:</strong> Se habilita que el usuario especifique
-        un número máximo de registros aleatorios para incluir en el reporte, aplicando
-        muestreo con random.sample en el worker antes de generar el CSV.
+        un número máximo de registros aleatorios para incluir en el reporte.
       </li>
     </ul>
-
     <h3 class="text-xl font-semibold mt-6">Desafíos y Soluciones</h3>
-    <p class="text-base leading-relaxed">
-      Algunos retos fueron manejar la sincronización y consistencia entre la
-      base de datos y el almacenamiento de blobs durante la eliminación,
-      asegurar la tolerancia a fallos en llamadas externas a la PokeAPI, y
-      adaptar el procesamiento asíncrono para incluir el muestreo sin impactar
-      el rendimiento. Se resolvieron con manejo adecuado de errores,
-      confirmaciones.
-    </p>
-
+    <div class="text-base leading-relaxed space-y-4">
+      <div>
+        <p>Durante el desarrollo surgieron algunos retos principales:</p>
+        <ul class="list-disc list-inside ml-5 mt-2 space-y-1">
+          <li>
+            Mantener la consistencia entre la base de datos y el Blob Storage al
+            eliminar reportes.
+          </li>
+          <li>
+            Evitar que errores en las llamadas a la PokeAPI interrumpieran el
+            proceso.
+          </li>
+          <li>
+            Asegurar que las variables de entorno y configuraciones coincidieran
+            en todos los repositorios.
+          </li>
+          <li>
+            Resolver un problema en Azure Function que tomaba mensajes de la
+            Queue pero no ejecutaba la generación de reportes ni actualizaba
+            estados.
+          </li>
+        </ul>
+      </div>
+      <div>
+        <p><strong>Solución:</strong></p>
+        <p>
+          Se resolvieron con validaciones, manejo de errores y confirmaciones en
+          operaciones importantes. Además, se revisó que las variables de
+          entorno estuvieran correctas y unificadas en cada servicio. En el caso
+          de Azure Function, se verificó que la versión de Python local
+          coincidiera con la configurada en Azure, lo que permitió que el
+          proceso funcionara correctamente.
+        </p>
+      </div>
+    </div>
     <h3 class="text-xl font-semibold mt-6">Repositorios de Código Fuente</h3>
     <div class="flex flex-wrap gap-3 justify-start pt-2">
       <a
